@@ -8,18 +8,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class usuario {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String nome;
+    @Getter
+    private String password;
     private String email;
-    private String senha;
 }
