@@ -34,7 +34,7 @@ $ git clone https://github.com/robertobettega/Tarefas.git
 $ git init
 $ git clone https://github.com/robertobettega/Tarefas-front.git
 ```
-* Utilizando sua IDE de preferência (O projeto foi desenvolvido no ECLIPSE) importe o projeto clonado como um projeto MAVEN.
+* Utilizando sua IDE de preferência (o projeto beck-end foi desenvolvido no IntelliJ e o front-end no VS Code) importe o projeto clonado como um projeto MAVEN.
 * Atualize o arquivo persistence.xml para seu banco de dados
 * Rode sua aplicação de back dando start no arquivo 'TarefasApplication.java', e roda sua aplicação de front com o comando "ng serve" em seu terminal.
 
