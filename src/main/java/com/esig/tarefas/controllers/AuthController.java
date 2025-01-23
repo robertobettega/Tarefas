@@ -18,28 +18,34 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
-@RequiredArgsConstructor
 public class AuthController {
     private final UsuarioRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
 
+    // Construtor explícito para injeção de dependência
+    public AuthController(UsuarioRepository repository, PasswordEncoder passwordEncoder, TokenService tokenService) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenService = tokenService;
+    }
+
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody LoginRequestDTO body){
-        Usuario usuario = this.repository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        if(passwordEncoder.matches(body.password(), usuario.getPassword())) {
+    public ResponseEntity login(@RequestBody LoginRequestDTO body) {
+        Usuario usuario = this.repository.findByEmail(body.email())
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        if (passwordEncoder.matches(body.password(), usuario.getPassword())) {
             String token = this.tokenService.generateToken(usuario);
             return ResponseEntity.ok(new ResponseDTO(usuario.getNome(), token));
         }
         return ResponseEntity.badRequest().build();
     }
 
-
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterRequestDTO body){
+    public ResponseEntity register(@RequestBody RegisterRequestDTO body) {
         Optional<Usuario> usuario = this.repository.findByEmail(body.email());
 
-        if(usuario.isEmpty()) {
+        if (usuario.isEmpty()) {
             Usuario newUser = new Usuario();
             newUser.setPassword(passwordEncoder.encode(body.password()));
             newUser.setEmail(body.email());
