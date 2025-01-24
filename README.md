@@ -23,6 +23,7 @@ endpoints devem autenticar através de token JWT.
 Com essas ferramentas foi possível criar uma aplicação visualmente agrádável e intuitiva, com o devido tratamento de dados na camada de persistência e contando com tratamento de erros simples.
 
 ![image](https://github.com/user-attachments/assets/6e818cb4-ce55-4daa-bd5b-d948aae71402)
+![image](https://github.com/user-attachments/assets/0979ad1c-e36d-4589-b09e-6a22174eeb43)
 
 ## Guia de execução dos projetos
 * Em uma pasta inicialize um repositório e clone os projetos
